@@ -4,8 +4,12 @@ const gameBoard = document.querySelector(".gameboard");
 const enterGameBtn = document.querySelector("button");
 const playerTurn = document.querySelector("#playerTurn");
 const playerInputContainer = document.querySelector(".players");
+const playerOneScore = document.querySelector(".player1-score");
+const playerTwoScore = document.querySelector(".player2-score");
+const scoreboard = document.querySelector(".scoreboard");
 
 gameBoard.style.display = "none";
+scoreboard.style.display = "none";
 
 enterGameBtn.addEventListener("click", () => {
   players[0].playerName = playerOneNameInput.value;
@@ -13,6 +17,8 @@ enterGameBtn.addEventListener("click", () => {
   gameBoard.style.display = "flex";
   playerTurn.textContent = players[gameturn].playerName;
   playerInputContainer.style.display = "none";
+  scoreboard.style.display = "flex";
+  updateDisplay();
 });
 
 const players = [
@@ -44,10 +50,22 @@ function checkWinCondition() {
         if (cards[numbers[0]].innerHTML != "" && cards[numbers[1]].innerHTML != "" && cards[numbers[2]].innerHTML != "") {
             if (cards[numbers[0]].innerHTML == cards[numbers[1]].innerHTML && cards[numbers[1]].innerHTML == cards[numbers[2]].innerHTML) {
             players[gameturn].score++;
-            console.log(players[gameturn].score)
+            updateDisplay();
+            setTimeout(resetGame, 1200)
         }
         }
         
+    }
+}
+
+function updateDisplay() {
+    playerOneScore.innerHTML = `${players[0].playerName} score: ${players[0].score}`;
+    playerTwoScore.innerHTML = `${players[1].playerName} score: ${players[1].score}`;
+}
+
+function resetGame() {
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].innerHTML = "";
     }
 }
 console.log(cards)

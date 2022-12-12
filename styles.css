@@ -56,3 +56,13 @@ input {
     outline: none;
 
 }
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    font-weight: bold;
+}
+.scoreboard > p {
+    font-size: 2em;
+}
