@@ -5,6 +5,7 @@ const enterGameBtn = document.querySelector("button");
 const playerTurn = document.querySelector("#playerTurn");
 const playerInputContainer = document.querySelector(".players");
 
+<<<<<<< HEAD
 gameBoard.style.display = "none";
 
 enterGameBtn.addEventListener("click", () => {
@@ -18,6 +19,13 @@ enterGameBtn.addEventListener("click", () => {
 const players = [
   { playerName: "playerOne", symbol: "0" },
   { playerName: "playerTwo", symbol: "x" },
+=======
+players = [
+    {playerName: "playerOne",
+     symbol: "O"},
+     {playerName: "playerTwo",
+     symbol: "X"}
+>>>>>>> new-styles
 ];
 let gameturn = 0;
 const cards = document.querySelectorAll(".card");
@@ -27,6 +35,7 @@ cards.forEach((card) => {
 });
 
 function addSymbols(event) {
+<<<<<<< HEAD
   if (event.target.textContent != "") {
     return;
   }
@@ -34,3 +43,11 @@ function addSymbols(event) {
   gameturn = (gameturn + 1) % 2;
   playerTurn.textContent = players[gameturn].playerName;
 }
+=======
+    if (event.target.innerHTML != "") {
+        return;
+    }
+    event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
+    gameturn = (gameturn + 1) % 2;
+}
+>>>>>>> new-styles
