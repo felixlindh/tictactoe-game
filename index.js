@@ -1,9 +1,9 @@
 
 players = [
     {playerName: "playerOne",
-     symbol: "0"},
+     symbol: "O"},
      {playerName: "playerTwo",
-     symbol: "x"}
+     symbol: "X"}
 ];
 gameturn = 0;
 cards = document.querySelectorAll(".card")
@@ -13,9 +13,9 @@ cards.forEach(card => {
 });
 
 function addSymbols(event) {
-    if (event.target.textContent != "") {
+    if (event.target.innerHTML != "") {
         return;
     }
-    event.target.textContent = players[gameturn].symbol;
+    event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
     gameturn = (gameturn + 1) % 2;
 }
