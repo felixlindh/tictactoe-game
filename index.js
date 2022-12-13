@@ -10,19 +10,26 @@ const scoreboard = document.querySelector(".scoreboard");
 const joinGameBtn = document.querySelector(".join-game");
 const serverIdInput = document.querySelector("#serverId");
 const createRoomBtn = document.querySelector(".create-room");
+const serverCode = document.querySelector(".server-code")
+const roomContainer = document.querySelector(".room-container")
 
 gameBoard.style.display = "none";
 scoreboard.style.display = "none";
 
 enterGameBtn.addEventListener("click", () => {
+  startGame();
+});
+
+function startGame() {
   players[0].playerName = playerOneNameInput.value;
   players[1].playerName = playerTwoNameInput.value;
   gameBoard.style.display = "flex";
   playerTurn.textContent = players[gameturn].playerName;
   playerInputContainer.style.display = "none";
   scoreboard.style.display = "flex";
+  roomContainer.style.display = "none";
   updateDisplay();
-});
+}
 
 joinGameBtn.addEventListener("click", () => {
   console.log(serverIdInput.value);
@@ -30,12 +37,15 @@ joinGameBtn.addEventListener("click", () => {
     console.log(data);
     idValue = data.id;
     onRoomUpdate(idValue, handleRoomUpdate);
+    startGame();
+    serverCode.innerHTML = `Room: ${serverIdInput.value}`
     myTurn = false;
   });
 });
 
 createRoomBtn.addEventListener("click", () => {
   createRoom(handleRoomCreated);
+  startGame();
   myTurn = true;
 });
 
@@ -130,6 +140,7 @@ let idValue;
 
 function handleRoomCreated(data) {
   onRoomUpdate(data.id, handleRoomUpdate);
+  serverCode.innerHTML =  `Send this code to your friend ${data.id}`
   console.log(data);
   idValue = data.id;
 }
