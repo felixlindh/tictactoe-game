@@ -17,6 +17,7 @@ gameBoard.style.display = "none";
 scoreboard.style.display = "none";
 
 enterGameBtn.addEventListener("click", () => {
+  playingLocal = true;
   startGame();
 });
 
@@ -67,7 +68,8 @@ const players = [
 ];
 let gameturn = 0,
 resetInGame = false, 
-  myTurn = true;
+  myTurn = true,
+  playingLocal = false;
 const cards = document.querySelectorAll(".card");
 
 cards.forEach((card) => {
@@ -79,7 +81,14 @@ function addSymbols(event) {
     return;
   }
   event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
-  updateRoom(idValue, gameboardToArray());
+  if (playingLocal == true) {
+    checkWinCondition();
+    gameturn = (gameturn + 1) % 2;
+    playerTurn.textContent = players[gameturn].playerName;
+  } else {
+    updateRoom(idValue, gameboardToArray());
+  }
+  
 }
 const winArray = [
   [0, 1, 2],
