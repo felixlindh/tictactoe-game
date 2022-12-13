@@ -32,9 +32,10 @@ function startGame() {
 }
 
 joinGameBtn.addEventListener("click", () => {
-  console.log(serverIdInput.value);
+  if (!checkNameInput()){
+    return;
+  }
   joinRoom(serverIdInput.value, (data) => {
-    console.log(data);
     idValue = data.id;
     onRoomUpdate(idValue, handleRoomUpdate);
     startGame();
@@ -43,7 +44,18 @@ joinGameBtn.addEventListener("click", () => {
   });
 });
 
+function checkNameInput() {
+  if (playerOneNameInput.value == "" || playerTwoNameInput.value == "") {
+      serverCode.innerHTML = `Please enter player names`
+      return false;
+  }
+  return true;
+}
+
 createRoomBtn.addEventListener("click", () => {
+  if (!checkNameInput()){
+    return;
+  }
   createRoom(handleRoomCreated);
   startGame();
   myTurn = true;
