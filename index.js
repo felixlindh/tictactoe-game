@@ -30,18 +30,21 @@ joinGameBtn.addEventListener("click", () => {
     console.log(data);
     idValue = data.id;
     onRoomUpdate(idValue, handleRoomUpdate);
+    myTurn = false;
   });
 });
 
 createRoomBtn.addEventListener("click", () => {
   createRoom(handleRoomCreated);
+  myTurn = true;
 });
 
 const players = [
   { playerName: "playerOne", symbol: "O", score: 0 },
   { playerName: "playerTwo", symbol: "X", score: 0 },
 ];
-let gameturn = 0;
+let gameturn = 0,
+  myTurn = true;
 const cards = document.querySelectorAll(".card");
 
 cards.forEach((card) => {
@@ -49,13 +52,11 @@ cards.forEach((card) => {
 });
 
 function addSymbols(event) {
-  if (event.target.innerHTML != "") {
+  if (event.target.innerHTML != "" || !myTurn) {
     return;
   }
   event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
   updateRoom(idValue, gameboardToArray());
-  checkWinCondition();
-  gameturn = (gameturn + 1) % 2;
   playerTurn.textContent = players[gameturn].playerName;
 }
 const winArray = [
@@ -146,4 +147,7 @@ function updateBoardFromData(board) {
       cards[i].innerHTML = `<p>${board[i]}</p>`;
     }
   }
+  checkWinCondition();
+  gameturn = (gameturn + 1) % 2;
+  myTurn = !myTurn;
 }
