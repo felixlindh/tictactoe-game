@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"
-      integrity="sha512-HTENHrkQ/P0NGDFd5nk6ibVtCkcM7jhr2c7GyvXp5O+4X6O5cQO9AhqFzM+MdeBivsX7Hoys2J7pp2wdgMpCvw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
-    <script src="socket.js"></script>
-    <script src="index.js" defer></script>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
 
-  <body>
-    <div class="players">
-      <label for="player1">Player 1</label>
-      <input type="text" placeholder="skriv namn" id="player1" />
-      <label for="player2">Player 2</label>
-      <input type="text" placeholder="skriv namn" id="player2" />
-      <button class="start-game-btn">Enter game</button>
-    </div>
-    <div class="room-container">
-      <button class="create-room">Create Room</button>
-      <p>OR</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"
+    integrity="sha512-HTENHrkQ/P0NGDFd5nk6ibVtCkcM7jhr2c7GyvXp5O+4X6O5cQO9AhqFzM+MdeBivsX7Hoys2J7pp2wdgMpCvw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="socket.js"></script>
+  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <button class="join-game">Join Game</button>
-      <input id="serverId" type="text" placeholder="enter server id" />
-    </div>
-    <div class="scoreboard">
-      <h2 class="player1-score"></h2>
-      <h2 class="player2-score"></h2>
-      <p>Current player turn:<span id="playerTurn">0</span></p>
-    </div>
+<body>
+  <div class="players">
+    <label for="player1">Player 1</label>
+    <input type="text" placeholder="skriv namn" id="player1" />
+    <label for="player2">Player 2</label>
+    <input type="text" placeholder="skriv namn" id="player2" />
+    <button class="start-game-btn">Play Local</button>
+  </div>
+  <div class="room-container">
+    <button class="create-room">Create Room</button>
+    <p>OR</p>
 
-    <div class="gameboard">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-    </div>
-  </body>
+    <button class="join-game">Join Game</button>
+    <input id="serverId" type="text" placeholder="enter server id" />
+  </div>
+  <h1 class="server-code"></h1>
+  <div class="scoreboard">
+    <h2 class="player1-score"></h2>
+    <h2 class="player2-score"></h2>
+    <p>Current player turn:<span id="playerTurn">0</span></p>
+  </div>
+
+  <div class="gameboard">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</body>
+
 </html>
