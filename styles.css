@@ -25,6 +25,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid white;
+    background-color: #111;
 }
 
 .card {
