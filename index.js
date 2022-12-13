@@ -66,6 +66,7 @@ const players = [
   { playerName: "playerTwo", symbol: "X", score: 0 },
 ];
 let gameturn = 0,
+resetInGame = false, 
   myTurn = true;
 const cards = document.querySelectorAll(".card");
 
@@ -74,7 +75,7 @@ cards.forEach((card) => {
 });
 
 function addSymbols(event) {
-  if (event.target.innerHTML != "" || !myTurn) {
+  if (event.target.innerHTML != "" || !myTurn || resetInGame == true) {
     return;
   }
   event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
@@ -104,6 +105,7 @@ function checkWinCondition() {
       ) {
         players[gameturn].score++;
         updateDisplay();
+        resetInGame = true;
         setTimeout(resetGame, 1200);
       }
     }
@@ -142,6 +144,7 @@ function gameboardToArray() {
 }
 
 function resetGame() {
+  resetInGame = false;
   for (let i = 0; i < cards.length; i++) {
     cards[i].innerHTML = "";
   }
