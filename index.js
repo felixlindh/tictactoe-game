@@ -57,7 +57,6 @@ function addSymbols(event) {
   }
   event.target.innerHTML = `<p>${players[gameturn].symbol}</p>`;
   updateRoom(idValue, gameboardToArray());
-  playerTurn.textContent = players[gameturn].playerName;
 }
 const winArray = [
   [0, 1, 2],
@@ -150,4 +149,5 @@ function updateBoardFromData(board) {
   checkWinCondition();
   gameturn = (gameturn + 1) % 2;
   myTurn = !myTurn;
+  playerTurn.textContent = players[gameturn].playerName;
 }
