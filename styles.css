@@ -34,6 +34,11 @@ button {
     height: 5em;
     text-align: center;
     color: white;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 1px 1px 10px #00AAFF;
 }
 
 .card > p {
@@ -69,7 +74,6 @@ input {
 }
 
 .room-container {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
